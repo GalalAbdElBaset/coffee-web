@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drip Cafe - Sign In</title>
+    <!-- Font Style -->
+    <link rel="stylesheet" href="css/main.modified.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Marck+Script&display=swap" rel="stylesheet" />
+    <link rel="icon" href="img/favicon.png" />
+  </head>
+  <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <i id="moon" class="fa fa-solid fa-moon" onclick=""></i>
+    </button>
+    <!-- TOp Button -->
+    <button id="backToTop" title="Back to Top">↑</button>
+    <!--Coffee Brand Loader -->
+    <div class="coffee-loader" id="coffee-loader">
+      <div class="letters">
+        <span>C</span>
+        <span>O</span>
+        <span>F</span>
+        <span>F</span>
+        <span>E</span>
+        <span>E</span>
+        <span>B</span>
+        <span>R</span>
+        <span>A</span>
+        <span>N</span>
+        <span>D</span>
+      </div>
+      <p class="wait-text">Please wait...</p>
+    </div>
+
+    <header>
+      <div class="second-header">
+        <div class="menu-btn">
+          <span class="menu-btn__burger"></span>
+        </div>
+        <!--./menu-btn-->
+        <div class="container">
+          <nav class="nav">
+            <div class="logo">
+              <div class="image">
+                <img src="img/logo.png" />
+              </div>
+              <div class="link-logo">
+                <a href="index.html" class="logo">
+                  <div class="words-logo">
+                    <span class="logo-first"> Coffee</span>
+                    <span class="logo-last">Brand</span>
+                  </div>
+                </a>
+              </div>
+              <!--./link-logo-->
+            </div>
+            <!--./logo-->
+            <ul class="menu-nav">
+              <li class="scroll menu-nav__item">
+                <div class="scroll-logo">
+                  <div class="scroll-image">
+                    <img src="img/logo.png" />
+                  </div>
+                  <div class="scroll-link-logo">
+                    <a href="index.html" class="scroll-logo">
+                      <div class="words-logo">
+                        <span class="logo-first"> Coffee</span>
+                        <span class="logo-last">Brand</span>
+                      </div>
+                    </a>
+                  </div>
+                  <!--./link-logo-->
+                </div>
+                <!--./logo-->
+              </li>
+              <li class="menu-nav__item active">
+                <a href="index.html" class="menu-nav__link"> Home </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="menu.html" class="menu-nav__link"> Menu </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="services.html" class="menu-nav__link"> Services </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="about.html" class="menu-nav__link"> About </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="contact.html" class="menu-nav__link"> Contact </a>
+              </li>
+            </ul>
+            <!--./menu-nav-->
+          </nav>
+          <!--./nav-->
+        </div>
+    </header>
+    <main class="parent-sign-in">
+      <section class="sign-in">
+        <div class="pic-area">
+          <div class="layer"></div>
+          <div class="pic-area-text">
+            <div id="login-box">
+              <form id="login-form" action="index.html" method="post">
+                <label>Username:</label>
+                <br />
+                <input type="text" id="userid" name="userid" pattern="[a-zA-Z0-9]+" required />
+                <br />
+                <label>Password:</label>
+                <br />
+                <div class="password-container">
+                  <input type="password" id="pswrd" name="pswrd" required />
+                  <i class="fa-solid fa-eye" id="togglePassword"></i>
+                </div>
+              </form>
+              <div id="username-display"></div>
+              <button class="btn-order" id="login-btn">Login</button>
+            </div>
+            <a href="sign-up.html" class="create-account-link">Create New Account</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="foot sign_in">
+      <ul class="foot-content">
+        <a href="#!">
+          <i class="fab fa-twitter icons"></i>
+        </a>
+        <a href="#!">
+          <i class="fab fa-facebook icons"></i>
+        </a>
+        <a href="#!">
+          <i class="fab fa-instagram icons"></i>
+        </a>
+        <a href="#!">
+          <i class="fab fa-snapchat-square icons"></i>
+        </a>
+      </ul>
+      <p class="copyright"> &copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa  fa-mug-hot"></i> by LatteLab </p>
+    </div>
+    <script src="js/login.js"></script>
+    <script src="https://kit.fontawesome.com/c057664144.js" crossorigin="anonymous"></script>
+    <script>
+      // / loader window/ 
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("coffee-loader");
+      setTimeout(() => {
+        loader.classList.add("fade-out");
+      }, 5000);
+    });
+          
+        </script>
+  </body>
+</html>

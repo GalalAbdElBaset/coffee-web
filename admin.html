@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel - CoffeeBrand</title>
+<link rel="stylesheet" href="css/main.css">
+<style>
+    body {
+        background-color: #111;
+        color: #fff;
+        font-family: "Baloo 2", cursive;
+        padding: 2rem;
+    }
+    h1 {
+        color: #f9b233;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+    th, td {
+        border: 1px solid #333;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f9b233;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    tr:nth-child(even) {
+        background-color: #2a2a2a;
+    }
+    tr:hover {
+        background-color: #3a3a3a;
+        transition: 0.3s;
+    }
+    button.delete-btn {
+        background-color: #ff4d4d;
+        border: none;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button.delete-btn:hover {
+        background-color: #e60000;
+    }
+    .no-users {
+        text-align: center;
+        padding: 1rem;
+        color: #aaa;
+    }
+</style>
+</head>
+<body>
+<h1>☕ Registered Accounts</h1>
+<table id="users-table">
+<thead>
+    <tr>
+    <th>#</th>
+    <th>Email</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Action</th>
+    </tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<script>
+function loadUsers() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const tbody = document.querySelector("#users-table tbody");
+    tbody.innerHTML = "";
+
+    if (users.length === 0) {
+    tbody.innerHTML = "<tr><td colspan='5' class='no-users'>No registered users found.</td></tr>";
+    return;
+    }
+
+    users.forEach((user, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${user.email}</td>
+        <td>${user.username}</td>
+        <td>${user.password}</td>
+        <td><button class="delete-btn" data-index="${index}">🗑️ Delete</button></td>`;
+    tbody.appendChild(row);
+    });
+
+    document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        const userIndex = e.target.getAttribute("data-index");
+        deleteUser(userIndex);
+    });
+    });
+}
+
+function deleteUser(index) {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const confirmDelete = confirm(`Are you sure you want to delete user "${users[index].username}"?`);
+    if (!confirmDelete) return;
+
+    users.splice(index, 1);
+    localStorage.setItem("users", JSON.stringify(users));
+    loadUsers(); 
+}
+
+loadUsers();
+</script>
+</body>
+</html>

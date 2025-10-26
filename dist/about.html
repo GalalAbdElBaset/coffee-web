@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drip Cafe - Home</title>
+    <!-- Font Style  -->
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/main.modified.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Marck+Script&display=swap" rel="stylesheet" />
+    <link rel="icon" href="img/favicon.png" />
+  </head>
+  <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <div class="loader">
+      <div class="coffee-cup">
+        <div class="steam"></div>
+      </div>
+      <p>Brewing your coffee...</p>
+    </div>
+    <!-- TOp Button -->
+    <button id="backToTop" title="Back to Top">↑</button>
+    <header>
+      <div class="second-header">
+        <div class="menu-btn">
+          <span class="menu-btn__burger"></span>
+        </div>
+        <!--./menu-btn-->
+        <div class="container">
+          <nav class="nav">
+            <div class="logo">
+              <div class="image">
+                <img src="img/logo.png" />
+              </div>
+              <div class="link-logo">
+                <a href="index.html" class="logo">
+                  <div class="words-logo">
+                    <span class="logo-first"> Coffee</span>
+                    <span class="logo-last">Brand</span>
+                  </div>
+                </a>
+              </div>
+              <!--./link-logo-->
+            </div>
+            <!--./logo-->
+            <ul class="menu-nav">
+              <li class="scroll menu-nav__item">
+                <div class="scroll-logo">
+                  <div class="scroll-image">
+                    <img src="img/logo.png" />
+                  </div>
+                  <div class="scroll-link-logo">
+                    <a href="index.html" class="scroll-logo">
+                      <div class="words-logo">
+                        <span class="logo-first"> Coffee</span>
+                        <span class="logo-last">Brand</span>
+                      </div>
+                    </a>
+                  </div>
+                  <!--./link-logo-->
+                </div>
+                <!--./logo-->
+              </li>
+              <li class="menu-nav__item active">
+                <a href="index.html" class="menu-nav__link"> Home </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="menu.html" class="menu-nav__link"> Menu </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="services.html" class="menu-nav__link"> Services </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="about.html" class="menu-nav__link"> About </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="contact.html" class="menu-nav__link"> Contact </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="#!" class="menu-nav__link cart__openBtn">
+                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="menu-nav__item user-controls" style="margin-right: 0px;">
+                <a href="sign-in.html" class="sign-in menu-nav__link">
+                  <i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
+                <span class="menu-nav__link" id="slash">/</span>
+                <a href="sign-up.html" class="sign-up menu-nav__link">Sign Up</a>
+                <button id="logout-btn" class="logout-btn" style="display: none;">Logout</button>
+                <span id="username-display" class="menu-nav__link username-display" style="display: none;"></span>
+              </li>
+            </ul>
+            <!--./menu-nav-->
+          </nav>
+          <!--./nav-->
+        </div>
+        <div class="cart-overlay">
+          <div class="cart">
+            <div class="cart__closeBtn">
+              <i class="fas fa-window-close"></i>
+            </div>
+            <h2>
+              <i class="fa fa-cart-arrow-down"></i>
+              <span class="span-primary">Shopping</span> Cart <i class="fa fa-cart-arrow-down"></i>
+            </h2>
+            <!-- JS will add items here -->
+            <div class="item1-display"></div>
+            <div class="item2-display"></div>
+            <div class="item3-display"></div>
+            <div class="item4-display"></div>
+            <div class="item5-display"></div>
+            <div class="item6-display"></div>
+            <div class="item7-display"></div>
+            <div class="item8-display"></div>
+            <div class="item9-display"></div>
+            <div class="item10-display"></div>
+            <div class="item11-display"></div>
+            <div class="item12-display"></div>
+            <div class="total"></div>
+          </div>
+          <!--./cart-->
+        </div>
+        <!--./cart-overlay-->
+      </div>
+      <!--./second-header-->
+    </header>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="coffee-image-container">
+          <div class="decorative-element"></div>
+          <div class="decorative-element"></div>
+        </div>
+        <h1>About Our Coffee</h1>
+        <p>We serve passion in every cup ☕</p>
+      </div>
+      <div class="scroll-indicator"></div>
+    </section>
+    <!-- Who We Are Section -->
+    <section class="who-we-are">
+      <div class="coffee-image-container">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+        <div class="coffee-image">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" style="width: 100%; height: 100%">
+            <defs>
+              <linearGradient id="woodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color: #3d2817; stop-opacity: 1" />
+                <stop offset="100%" style="stop-color: #2a1810; stop-opacity: 1" />
+              </linearGradient>
+              <linearGradient id="cupGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color: #f5f5dc; stop-opacity: 1" />
+                <stop offset="100%" style="stop-color: #e6d5c3; stop-opacity: 1" />
+              </linearGradient>
+              <radialGradient id="coffeeGrad" cx="50%" cy="40%">
+                <stop offset="0%" style="stop-color: #d4a574; stop-opacity: 1" />
+                <stop offset="50%" style="stop-color: #a0826d; stop-opacity: 1" />
+                <stop offset="100%" style="stop-color: #8b6f47; stop-opacity: 1" />
+              </radialGradient>
+              <radialGradient id="foamGrad" cx="50%" cy="50%">
+                <stop offset="0%" style="stop-color: #faf8f5; stop-opacity: 1" />
+                <stop offset="100%" style="stop-color: #e6d5c3; stop-opacity: 1" />
+              </radialGradient>
+            </defs>
+            <!-- Background -->
+            <rect fill="url(#woodGrad)" width="500" height="600" />
+            <!-- Shadow -->
+            <ellipse cx="250" cy="480" rx="140" ry="25" fill="#2a1810" opacity="0.4" />
+            <!-- Saucer -->
+            <ellipse cx="250" cy="450" rx="160" ry="20" fill="url(#cupGrad)" />
+            <ellipse cx="250" cy="450" rx="150" ry="18" fill="#d4c4b0" />
+            <ellipse cx="250" cy="450" rx="130" ry="15" fill="url(#cupGrad)" />
+            <!-- Cup body -->
+            <path d="M 150 350 Q 145 380, 150 420 L 350 420 Q 355 380, 350 350 Z" fill="url(#cupGrad)" />
+            <ellipse cx="250" cy="350" rx="100" ry="20" fill="#faf8f5" />
+            <!-- Cup rim -->
+            <ellipse cx="250" cy="350" rx="100" ry="15" fill="#ffffff" opacity="0.6" />
+            <!-- Coffee inside -->
+            <ellipse cx="250" cy="360" rx="90" ry="15" fill="url(#coffeeGrad)" />
+            <!-- Latte art - heart -->
+            <path d="M 250 355 Q 230 350, 220 365 Q 220 375, 250 385 Q 280 375, 280 365 Q 280 350, 250 355 Z" fill="url(#foamGrad)" opacity="0.9" />
+            <path d="M 250 370 L 250 383" stroke="#e6d5c3" stroke-width="2" fill="none" opacity="0.7" />
+            <!-- Handle -->
+            <path d="M 350 365 Q 390 365, 395 395 Q 395 410, 375 415 Q 360 415, 350 405" fill="none" stroke="url(#cupGrad)" stroke-width="15" opacity="0.9" />
+            <path d="M 350 365 Q 385 365, 390 395 Q 390 408, 373 413 Q 360 413, 350 405" fill="none" stroke="#faf8f5" stroke-width="10" />
+            <!-- Steam -->
+            <g opacity="0.4">
+              <path d="M 230 340 Q 225 320, 230 300" stroke="#e6d5c3" stroke-width="2" fill="none" stroke-linecap="round">
+                <animate attributeName="d" dur="3s" repeatCount="indefinite" values="M 230 340 Q 225 320, 230 300;
+                                        M 230 340 Q 235 320, 230 300;
+                                        M 230 340 Q 225 320, 230 300" />
+                <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0.4;0.7;0.4" />
+              </path>
+              <path d="M 250 335 Q 255 310, 250 285" stroke="#e6d5c3" stroke-width="2" fill="none" stroke-linecap="round">
+                <animate attributeName="d" dur="3.5s" repeatCount="indefinite" values="M 250 335 Q 255 310, 250 285;
+                                        M 250 335 Q 245 310, 250 285;
+                                        M 250 335 Q 255 310, 250 285" />
+                <animate attributeName="opacity" dur="3.5s" repeatCount="indefinite" values="0.4;0.8;0.4" />
+              </path>
+              <path d="M 270 340 Q 275 320, 270 295" stroke="#e6d5c3" stroke-width="2" fill="none" stroke-linecap="round">
+                <animate attributeName="d" dur="4s" repeatCount="indefinite" values="M 270 340 Q 275 320, 270 295;
+                                        M 270 340 Q 265 320, 270 295;
+                                        M 270 340 Q 275 320, 270 295" />
+                <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0.4;0.6;0.4" />
+              </path>
+            </g>
+            <!-- Coffee beans scattered -->
+            <ellipse cx="100" cy="520" rx="8" ry="12" fill="#6b4423" opacity="0.6" transform="rotate(30 100 520)" />
+            <ellipse cx="115" cy="535" rx="7" ry="11" fill="#8b5a2b" opacity="0.6" transform="rotate(-20 115 535)" />
+            <ellipse cx="380" cy="510" rx="9" ry="13" fill="#6b4423" opacity="0.6" transform="rotate(45 380 510)" />
+            <ellipse cx="400" cy="530" rx="8" ry="12" fill="#8b5a2b" opacity="0.6" transform="rotate(-35 400 530)" />
+          </svg>
+        </div>
+      </div>
+      <div class="content">
+        <h2>Who We Are</h2>
+        <p> Our coffee shop was founded with one simple idea — to make every cup memorable. We carefully select our beans and roast them to perfection, ensuring every sip delivers warmth, aroma, and happiness. </p>
+        <p> Whether you're here for a quiet morning coffee or an evening catch-up with friends, we make sure you feel at home. </p>
+      </div>
+    </section>
+    <section class="why-choose">
+      <h2>Why Choose Us</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 20H14C12.8954 20 12 20.8954 12 22V24C12 25.1046 12.8954 26 14 26H16L18 48C18 49.6569 19.3431 51 21 51H43C44.6569 51 46 49.6569 46 48L48 26H50C51.1046 26 52 25.1046 52 24V22C52 20.8954 51.1046 20 50 20Z" fill="#8b4513" />
+                <ellipse cx="32" cy="24" rx="18" ry="3" fill="#6b4423" />
+                <path d="M48 26C48 27 46 28 46 28L44 48H20L18 28C18 28 16 27 16 26" fill="#a0826d" />
+                <path d="M52 18H12V20H14L16 26H48L50 20H52V18Z" fill="#8b6f47" />
+                <ellipse cx="32" cy="28" rx="14" ry="2.5" fill="#5c4a3a" />
+                <path d="M28 28C28 28 30 32 32 32C34 32 36 28 36 28" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round" fill="none" />
+                <circle cx="30" cy="30" r="1" fill="#e6d5c3" />
+                <circle cx="34" cy="30" r="1" fill="#e6d5c3" />
+                <path d="M50 26C52 26 54 28 54 30C54 32 52 34 50 34" stroke="#8b4513" stroke-width="3" fill="none" />
+                <g opacity="0.5">
+                  <path d="M26 18C26 18 26 14 28 12" stroke="#a0826d" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M32 16C32 16 32 12 32 10" stroke="#a0826d" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M38 18C38 18 38 14 36 12" stroke="#a0826d" stroke-width="1.5" stroke-linecap="round" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3>Quality Coffee</h3>
+          <p>We use only premium roasted beans</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 52C32 52 10 40 10 24C10 16 14 12 20 12C24 12 28 14 32 18C36 14 40 12 44 12C50 12 54 16 54 24C54 40 32 52 32 52Z" fill="#8b4513" />
+                <path d="M32 52C32 52 10 40 10 24C10 16 14 12 20 12C24 12 28 14 32 18C36 14 40 12 44 12C50 12 54 16 54 24C54 40 32 52 32 52Z" fill="#a0826d" opacity="0.7" />
+                <path d="M20 12C24 12 28 14 32 18C32 18 28 24 24 28C20 32 16 34 14 32C10 28 10 24 10 24C10 16 14 12 20 12Z" fill="#8b6f47" opacity="0.5" />
+                <path d="M44 12C40 12 36 14 32 18C32 18 36 24 40 28C44 32 48 34 50 32C54 28 54 24 54 24C54 16 50 12 44 12Z" fill="#8b6f47" opacity="0.5" />
+                <circle cx="26" cy="22" r="2" fill="#d4a574" opacity="0.6" />
+                <circle cx="38" cy="22" r="2" fill="#d4a574" opacity="0.6" />
+                <path d="M32 20C32 20 30 26 32 30C34 26 32 20 32 20Z" fill="#6b4423" opacity="0.3" />
+              </svg>
+            </div>
+          </div>
+          <h3>Friendly Service</h3>
+          <p>Our team makes you feel at home</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="22" fill="#a0826d" />
+                <circle cx="32" cy="32" r="20" fill="#8b6f47" />
+                <circle cx="32" cy="32" r="18" fill="#d4a574" />
+                <circle cx="24" cy="28" r="3" fill="#5c4a3a" />
+                <circle cx="40" cy="28" r="3" fill="#5c4a3a" />
+                <circle cx="24.5" cy="27" r="1.2" fill="#8b4513" />
+                <circle cx="40.5" cy="27" r="1.2" fill="#8b4513" />
+                <path d="M22 38C22 38 26 44 32 44C38 44 42 38 42 38" stroke="#6b4423" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                <path d="M22 38C22 38 26 42 32 42C38 42 42 38 42 38" fill="#8b4513" opacity="0.3" />
+                <ellipse cx="32" cy="40" rx="6" ry="3" fill="#a0826d" opacity="0.4" />
+                <path d="M18 26C16 26 14 24 14 22" stroke="#8b6f47" stroke-width="2" stroke-linecap="round" />
+                <path d="M46 26C48 26 50 24 50 22" stroke="#8b6f47" stroke-width="2" stroke-linecap="round" />
+                <circle cx="25" cy="28.5" r="0.8" fill="#faf8f5" opacity="0.8" />
+                <circle cx="41" cy="28.5" r="0.8" fill="#faf8f5" opacity="0.8" />
+              </svg>
+            </div>
+          </div>
+          <h3>Relaxing Atmosphere</h3>
+          <p>A perfect place to unwind and enjoy</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <div class="icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="22" fill="#a0826d" />
+                <circle cx="32" cy="32" r="20" fill="#8b6f47" />
+                <circle cx="32" cy="32" r="18" fill="#d4a574" />
+                <circle cx="32" cy="32" r="2" fill="#5c4a3a" />
+                <rect x="31" y="14" width="2" height="10" fill="#5c4a3a" rx="1" />
+                <rect x="31" y="32" width="2" height="10" fill="#6b4423" rx="1" />
+                <rect x="32" y="31" width="10" height="2" fill="#6b4423" rx="1" />
+                <g opacity="0.6">
+                  <line x1="32" y1="12" x2="32" y2="14" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="32" y1="50" x2="32" y2="52" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="12" y1="32" x2="14" y2="32" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="50" y1="32" x2="52" y2="32" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="18" y1="18" x2="20" y2="20" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="44" y1="44" x2="46" y2="46" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="46" y1="18" x2="44" y2="20" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="20" y1="44" x2="18" y2="46" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round" />
+                </g>
+                <text x="32" y="52" font-family="Arial" font-size="8" fill="#8b4513" text-anchor="middle" font-weight="bold"> 12 </text>
+                <text x="52" y="35" font-family="Arial" font-size="8" fill="#8b4513" text-anchor="middle" font-weight="bold"> 3 </text>
+                <text x="32" y="16" font-family="Arial" font-size="8" fill="#8b4513" text-anchor="middle" font-weight="bold"> 12 </text>
+                <text x="16" y="35" font-family="Arial" font-size="8" fill="#8b4513" text-anchor="middle" font-weight="bold"> 9 </text>
+              </svg>
+            </div>
+          </div>
+          <h3>Open All Day</h3>
+          <p>Come anytime — we're here for you!</p>
+        </div>
+      </div>
+    </section>
+    <!-- Start Footer -->
+    <div class="footer" id="footer">
+      <div class="container">
+        <!-- Box 1: About -->
+        <div class="box">
+          <h3>Coffee Brand</h3>
+          <p class="text"> Coffee Brand is your first destination for coffee lovers — brewed with love and served with passion. </p>
+          <ul class="social">
+            <li>
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Box 2: Quick Links -->
+        <div class="box">
+          <h4>Quick Links</h4>
+          <ul class="links">
+            <li>
+              <i class="fa fa-angle-double-right"></i>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <i class="fa fa-angle-double-right"></i>
+              <a href="menu.html">Menu</a>
+            </li>
+            <li>
+              <i class="fa fa-angle-double-right"></i>
+              <a href="services.html">Services</a>
+            </li>
+            <li>
+              <i class="fa fa-angle-double-right"></i>
+              <a href="about.html">About</a>
+            </li>
+            <li>
+              <i class="fa fa-angle-double-right"></i>
+              <a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Box 3: Contact Info -->
+        <div class="box">
+          <h4>Contact Info</h4>
+          <div class="line">
+            <i class="fas fa-map-marker-alt fa-fw"></i>
+            <div class="info">Egypt, Assiut, Inside The Assiut, 35</div>
+          </div>
+          <div class="line">
+            <i class="far fa-clock fa-fw"></i>
+            <div class="info">From 10:00 AM To 6:00 PM</div>
+          </div>
+          <div class="line">
+            <i class="fas fa-phone-volume fa-fw"></i>
+            <div class="info">
+              <span>+20 1032581322</span>
+              <br>
+              <span>+20 1025939211</span>
+            </div>
+          </div>
+        </div>
+        <!-- Box 4: Gallery -->
+        <div class="box footer-gallery">
+          <h4>From Our Menu</h4>
+          <div class="gallery">
+            <img src="img/menu-1.png" alt="">
+            <img src="img/menu-2.png" alt="">
+            <img src="img/menu-3.png" alt="">
+            <img src="img/menu-4.png" alt="">
+            <img src="img/menu-5.png" alt="">
+            <img src="img/menu-6.png" alt="">
+          </div>
+        </div>
+      </div>
+      <p class="copyright"> &copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa  fa-mug-hot"></i> by LatteLab </p>
+    </div>
+    <script src="https://kit.fontawesome.com/c057664144.js" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script>
+      // / loader window/ 
+        window.addEventListener("load", () => {
+        const loader = document.querySelector(".loader");
+        setTimeout(() => {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+        }, 1200);
+        });
+    </script>
+</body>
+</html>

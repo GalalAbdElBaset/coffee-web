@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drip Cafe - Services</title>
+    <!-- Font Style  -->
+    <link rel="stylesheet" href="css/main.modified.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Marck+Script&display=swap" rel="stylesheet" />
+    <link rel="icon" href="img/favicon.png" />
+  </head>
+  <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <!-- TOp Button -->
+    <button id="backToTop" title="Back to Top">↑</button>
+    <div class="loader">
+      <div class="coffee-cup">
+        <div class="steam"></div>
+      </div>
+      <p>Brewing your coffee...</p>
+    </div>
+    <header>
+      <div class="second-header">
+        <div class="menu-btn">
+          <span class="menu-btn__burger"></span>
+        </div>
+        <!--./menu-btn-->
+        <div class="container">
+          <nav class="nav">
+            <div class="logo">
+              <div class="image">
+                <img src="img/logo.png" />
+              </div>
+              <div class="link-logo">
+                <a href="index.html" class="logo">
+                  <div class="words-logo">
+                    <span class="logo-first"> Coffee</span>
+                    <span class="logo-last">Brand</span>
+                  </div>
+                </a>
+              </div>
+              <!--./link-logo-->
+            </div>
+            <!--./logo-->
+            <ul class="menu-nav">
+              <li class="scroll menu-nav__item">
+                <div class="scroll-logo">
+                  <div class="scroll-image">
+                    <img src="img/logo.png" />
+                  </div>
+                  <div class="scroll-link-logo">
+                    <a href="index.html" class="scroll-logo">
+                      <div class="words-logo">
+                        <span class="logo-first"> Coffee</span>
+                        <span class="logo-last">Brand</span>
+                      </div>
+                    </a>
+                  </div>
+                  <!--./link-logo-->
+                </div>
+                <!--./logo-->
+              </li>
+              <li class="menu-nav__item active">
+                <a href="index.html" class="menu-nav__link"> Home </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="menu.html" class="menu-nav__link"> Menu </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="services.html" class="menu-nav__link"> Services </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="about.html" class="menu-nav__link"> About </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="contact.html" class="menu-nav__link"> Contact </a>
+              </li>
+              <li class="menu-nav__item">
+                <a href="#!" class="menu-nav__link cart__openBtn">
+                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="menu-nav__item user-controls" style="margin-right: 0px;">
+                <a href="sign-in.html" class="sign-in menu-nav__link">
+                  <i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
+                <span class="menu-nav__link" id="slash">/</span>
+                <a href="sign-up.html" class="sign-up menu-nav__link">Sign Up</a>
+                <button id="logout-btn" class="logout-btn" style="display: none;">Logout</button>
+                <span id="username-display" class="menu-nav__link username-display" style="display: none;"></span>
+              </li>
+            </ul>
+            <!--./menu-nav-->
+          </nav>
+          <!--./nav-->
+        </div>
+      </div>
+      <!-- Shopping Cart -->
+      <div class="cart-overlay">
+        <div class="cart">
+          <div class="cart__closeBtn">
+            <i class="fas fa-window-close"></i>
+          </div>
+          <h2>
+            <i class="fa fa-cart-arrow-down"></i>
+            <span class="span-primary">Shopping</span> Cart <i class="fa fa-cart-arrow-down"></i>
+          </h2>
+          <!-- JS will add items here -->
+          <div class="item1-display"></div>
+          <div class="item2-display"></div>
+          <div class="item3-display"></div>
+          <div class="item4-display"></div>
+          <div class="item5-display"></div>
+          <div class="item6-display"></div>
+          <div class="item7-display"></div>
+          <div class="item8-display"></div>
+          <div class="item9-display"></div>
+          <div class="item10-display"></div>
+          <div class="item11-display"></div>
+          <div class="item12-display"></div>
+          <div class="total"></div>
+        </div>
+      </div>
+      <!-- ========== Section 1: Hero ========== -->
+      <section class="services-hero">
+        <div class="overlay"></div>
+        <div class="content">
+          <h1>Our Coffee Services ☕</h1>
+          <p>Enjoy the aroma, taste, and warmth of our freshly brewed coffee crafted for coffee lovers.</p>
+          <a href="#" class="btn explore">Explore More</a>
+          <a href="#" class="btn order">Order Now</a>
+        </div>
+        <div class="steam"></div>
+        <div class="steam delay"></div>
+      </section>
+      <!-- ========== Section 2: Coffee Highlight ========== -->
+      <section class="services-highlight">
+        <div class="highlight-content">
+          <h2>Enjoy The Most <span>Delicious Coffee</span>
+          </h2>
+          <p> Start your day with coffee, enhancing productivity and mood. Its invigorating aroma sets a focused tone for tackling tasks with renewed energy and positivity. </p>
+          <div class="buttons">
+            <a href="#" class="btn explore">Explore →</a>
+            <a href="#" class="btn order">Order Coffee ☕</a>
+          </div>
+        </div>
+        <div class="highlight-image">
+          <img src="img/service/service1.png" alt="Coffee Cup">
+        </div>
+      </section>
+      <!-- ========== Section 3: Coffee Cards ========== -->
+      <section class="coffee-cards">
+        <h2 class="section-title">Our Popular Coffees</h2>
+        <div class="cards-container">
+          <div class="coffee-card animate-up">
+            <img src="img/service/card.png" alt="Americano">
+            <h3>Americano</h3>
+            <p>Smooth espresso blended with hot water for a balanced flavor.</p>
+            <div class="rating">★★★★★</div>
+            <a href="#" class="btn more">More</a>
+          </div>
+          <div class="coffee-card animate-up" style="animation-delay:0.2s;">
+            <img src="img/service/card2.png" alt="Black Coffee">
+            <h3>Black Coffee</h3>
+            <p>Rich and bold taste, the pure essence of coffee for real lovers.</p>
+            <div class="rating">★★★★☆</div>
+            <a href="#" class="btn more">More</a>
+          </div>
+          <div class="coffee-card animate-up" style="animation-delay:0.4s;">
+            <img src="img/service/card3.png" alt="Mocha">
+            <h3>Mocha</h3>
+            <p>Chocolate meets espresso — a perfect harmony of sweetness.</p>
+            <div class="rating">★★★★★</div>
+            <a href="#" class="btn more">More</a>
+          </div>
+          <div class="coffee-card animate-up" style="animation-delay:0.6s;">
+            <img src="img/service/service0.jpeg" alt="Breve">
+            <h3>Breve</h3>
+            <p>Espresso with steamed half & half for a creamy indulgent drink.</p>
+            <div class="rating">★★★★☆</div>
+            <a href="#" class="btn more">More</a>
+          </div>
+          <div class="coffee-card animate-up" style="animation-delay:0.7s;">
+            <img src="img/menu-6.png" alt="Breve">
+            <h3>espresso</h3>
+            <p>Espresso with steamed half & half for a creamy indulgent drink.</p>
+            <div class="rating">★★★★☆</div>
+            <a href="#" class="btn more">More</a>
+          </div>
+          <div class="coffee-card animate-up" style="animation-delay:0.8s;">
+            <img src="img/Dark-circle.jpeg" alt="Breve">
+            <h3>Dark-Roast</h3>
+            <p>Espresso with steamed half & half for a creamy indulgent drink.</p>
+            <div class="rating">★★★★☆</div>
+            <a href="#" class="btn more">More</a>
+          </div>
+        </div>
+      </section>
+      <!-- Start Footer -->
+      <div class="footer" id="footer">
+        <div class="container">
+          <!-- Box 1: About -->
+          <div class="box">
+            <h3>Coffee Brand</h3>
+            <p class="text"> Coffee Brand is your first destination for coffee lovers — brewed with love and served with passion. </p>
+            <ul class="social">
+              <li>
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Box 2: Quick Links -->
+          <div class="box">
+            <h4>Quick Links</h4>
+            <ul class="links">
+              <li>
+                <i class="fa fa-angle-double-right"></i>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-double-right"></i>
+                <a href="menu.html">Menu</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-double-right"></i>
+                <a href="services.html">Services</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-double-right"></i>
+                <a href="about.html">About</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-double-right"></i>
+                <a href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Box 3: Contact Info -->
+          <div class="box">
+            <h4>Contact Info</h4>
+            <div class="line">
+              <i class="fas fa-map-marker-alt fa-fw"></i>
+              <div class="info">Egypt, Assiut, Inside The Assiut, 35</div>
+            </div>
+            <div class="line">
+              <i class="far fa-clock fa-fw"></i>
+              <div class="info">From 10:00 AM To 6:00 PM</div>
+            </div>
+            <div class="line">
+              <i class="fas fa-phone-volume fa-fw"></i>
+              <div class="info">
+                <span>+20 1032581322</span>
+                <br>
+                <span>+20 1025939211</span>
+              </div>
+            </div>
+          </div>
+          <!-- Box 4: Gallery -->
+          <div class="box footer-gallery">
+            <h4>From Our Menu</h4>
+            <div class="gallery">
+              <img src="img/menu-1.png" alt="">
+              <img src="img/menu-2.png" alt="">
+              <img src="img/menu-3.png" alt="">
+              <img src="img/menu-4.png" alt="">
+              <img src="img/menu-5.png" alt="">
+              <img src="img/menu-6.png" alt="">
+            </div>
+          </div>
+        </div>
+        <p class="copyright"> &copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa  fa-mug-hot"></i> by LatteLab </p>
+      </div>
+      <!-- End Footer -->
+      <script src="js/script.js"></script>
+      <script src="https://kit.fontawesome.com/c057664144.js" crossorigin="anonymous"></script>
+      <script>
+        // / loader window/ 
+        window.addEventListener("load", () => {
+          const loader = document.querySelector(".loader");
+          setTimeout(() => {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+          }, 1200);
+        });
+      </script>
+      <script>
+        const animatedEls = document.querySelectorAll(".animate-up");
+        window.addEventListener("scroll", () => {
+          animatedEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+              el.classList.add("show");
+            }
+          });
+        });
+      </script>
+  </body>
+</html>
