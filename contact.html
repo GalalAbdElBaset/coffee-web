@@ -26,18 +26,19 @@
 
     <!-- Header -->
     <header>
+        <div id="menu-overlay" class="menu-overlay"></div>
         <div class="second-header">
-            <button class="menu-btn" aria-label="Menu">
+            <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu-nav">
                 <span class="menu-btn__burger"></span>
             </button>
             <div class="container">
                 <nav class="nav">
                     <div class="logo">
                         <div class="image">
-                            <img src="img/logo.png" alt="Logo" />
+                            <img src="img/logo.png" alt="Coffee Shop Logo" loading="lazy" />
                         </div>
                         <div class="link-logo">
-                            <a href="index.html" class="logo">
+                            <a href="index.html" class="logo-link">
                                 <div class="words-logo">
                                     <span class="logo-first">Coffee</span>
                                     <span class="logo-last">Brand</span>
@@ -46,20 +47,18 @@
                         </div>
                     </div>
                     
-                    <ul class="menu-nav">
-                        <li class="scroll menu-nav__item">
-                            <div class="scroll-logo">
-                                <div class="scroll-image">
-                                    <img src="img/logo.png" alt="Logo" />
-                                </div>
-                                <div class="scroll-link-logo">
-                                    <a href="index.html" class="scroll-logo">
-                                        <div class="words-logo">
-                                            <span class="logo-first">Coffee</span>
-                                            <span class="logo-last">Brand</span>
-                                        </div>
-                                    </a>
-                                </div>
+                    <ul class="menu-nav" id="menu-nav">
+                        <li class="logo">
+                            <div class="image">
+                                <img src="img/logo.png" alt="Coffee Shop Logo" loading="lazy" />
+                            </div>
+                            <div class="link-logo">
+                                <a href="index.html" class="logo-link">
+                                    <div class="words-logo">
+                                        <span class="logo-first">Coffee</span>
+                                        <span class="logo-last">Brand</span>
+                                    </div>
+                                </a>
                             </div>
                         </li>
                         <li class="menu-nav__item">
@@ -77,12 +76,16 @@
                         <li class="menu-nav__item active">
                             <a href="contact.html" class="menu-nav__link">Contact</a>
                         </li>
+                        
+                        <!-- Cart Button -->
                         <li class="menu-nav__item">
-                            <button class="menu-nav__link cart__openBtn" aria-label="Shopping cart">
+                            <button class="cart__openBtn" aria-label="Shopping cart">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 <span class="cart-badge hidden" id="cart-badge">0</span>
                             </button>
                         </li>
+                        
+                        <!-- Auth Section -->
                         <li class="menu-nav__item user-controls">
                             <a href="sign-in.html" class="sign-in menu-nav__link">
                                 <i class="fa fa-user" aria-hidden="true"></i>Sign In
