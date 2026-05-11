@@ -1,321 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CoffeeBrand</title>
-    <!-- Font Style -->
-    <link rel="stylesheet" href="css/main.modified.css" />
+    <title>Coffee Brand - Home</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css" /> 
+    <link rel="stylesheet" href="css/home.css" /> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- Font Family -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Marck+Script&display=swap" rel="stylesheet" />
-    <!-- font awesome -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+    
     <link rel="icon" href="img/favicon.png" />
-  </head>
-  <body>
-    <!-- Mood -->
+    
+    <style>
+        /* News Popup Modal Styles */
+        .news-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .news-popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .news-popup-content {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: popupScale 0.3s ease;
+            border: 1px solid var(--border-gold);
+        }
+        
+        @keyframes popupScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .news-popup-header {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        
+        .news-popup-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .news-popup-close:hover {
+            background: var(--gold-500);
+            transform: rotate(90deg);
+        }
+        
+        .news-popup-body {
+            padding: 2rem;
+        }
+        
+        .news-popup-date {
+            font-size: 0.85rem;
+            color: var(--gold-500);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .news-popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .news-popup-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-popup-details {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+        }
+        
+        .news-popup-details p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .news-popup-details i {
+            color: var(--gold-500);
+            width: 20px;
+        }
+        
+        .news-popup-btn {
+            background: var(--gradient-gold);
+            color: var(--text-inverse);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        
+        .news-popup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        @media (max-width: 768px) {
+            .news-popup-header {
+                height: 150px;
+            }
+            .news-popup-body {
+                padding: 1.5rem;
+            }
+            .news-popup-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      <i class="fa-solid fa-moon"></i>
+        <i class="fa-solid fa-moon"></i>
     </button>
-    <!-- TOp Button -->
+    
+    <!-- Back to Top Button -->
     <button id="backToTop" title="Back to Top">↑</button>
-    <!--loader page -->
-    <div class="loader">
-      <div class="coffee-cup">
-        <div class="steam"></div>
-      </div>
-      <!--./coffee-cup-->
-      <p>Brewing your coffee...</p>
+    
+    <!-- Coffee Brand Loader -->
+    <div class="coffee-loader" id="coffee-loader">
+        <div class="letters">
+            <span>C</span><span>O</span><span>F</span><span>F</span><span>E</span><span>E</span>
+            <span>B</span><span>R</span><span>A</span><span>N</span><span>D</span>
+        </div>
+        <p class="wait-text">Please wait...</p>
     </div>
-    <!--./loader-->
+    
+    <!-- Header -->
     <header>
-      <div class="second-header">
-        <div class="menu-btn">
-          <span class="menu-btn__burger"></span>
-        </div>
-        <!--./menu-btn-->
-        <div class="container">
-          <nav class="nav">
-            <div class="logo">
-              <div class="image">
-                <img src="img/logo.png" />
-              </div>
-              <div class="link-logo">
-                <a href="index.html" class="logo">
-                  <div class="words-logo">
-                    <span class="logo-first"> Coffee</span>
-                    <span class="logo-last">Brand</span>
-                  </div>
-                </a>
-              </div>
-              <!--./link-logo-->
+        <div id="menu-overlay" class="menu-overlay"></div>
+        <div class="second-header">
+            <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu-nav">
+                <span class="menu-btn__burger"></span>
+            </button>
+            <div class="container">
+                <nav class="nav">
+                    <div class="logo">
+                        <div class="image">
+                            <img src="img/logo.png" alt="Coffee Shop Logo" loading="lazy" />
+                        </div>
+                        <div class="link-logo">
+                            <a href="index.html" class="logo-link">
+                                <div class="words-logo">
+                                    <span class="logo-first">Coffee</span>
+                                    <span class="logo-last">Brand</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <ul class="menu-nav" id="menu-nav">
+                        <li class="logo">
+                          <div class="image">
+                              <img src="img/logo.png" alt="Coffee Shop Logo" loading="lazy" />
+                          </div>
+                          <div class="link-logo">
+                              <a href="index.html" class="logo-link">
+                                  <div class="words-logo">
+                                      <span class="logo-first">Coffee</span>
+                                      <span class="logo-last">Brand</span>
+                                  </div>
+                              </a>
+                          </div>
+                        </li>
+                        <li class="menu-nav__item active">
+                            <a href="index.html" class="menu-nav__link">Home</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="menu.html" class="menu-nav__link">Menu</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="services.html" class="menu-nav__link">Services</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="about.html" class="menu-nav__link">About</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="contact.html" class="menu-nav__link">Contact</a>
+                        </li>
+                        
+                        <!-- Cart Button -->
+                        <li class="menu-nav__item">
+                            <button class="cart__openBtn" aria-label="Shopping cart">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                <span class="cart-badge hidden" id="cart-badge">0</span>
+                            </button>
+                        </li>
+                        
+                        <!-- Auth Section -->
+                        <li class="menu-nav__item user-controls">
+                            <a href="sign-in.html" class="sign-in menu-nav__link">
+                                <i class="fa fa-user" aria-hidden="true"></i>Sign In
+                            </a>
+                            <span class="menu-nav__link" id="slash">/</span>
+                            <a href="sign-up.html" class="sign-up menu-nav__link">Sign Up</a>
+                            <button id="logout-btn" class="logout-btn hidden">Logout</button>
+                            <span id="username-display" class="menu-nav__link username-display hidden"></span>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <!--./logo-->
-            <ul class="menu-nav">
-              <li class="scroll menu-nav__item">
-                <div class="scroll-logo">
-                  <div class="scroll-image">
-                    <img src="img/logo.png" />
-                  </div>
-                  <div class="scroll-link-logo">
-                    <a href="index.html" class="scroll-logo">
-                      <div class="words-logo">
-                        <span class="logo-first"> Coffee</span>
-                        <span class="logo-last">Brand</span>
-                      </div>
-                    </a>
-                  </div>
-                  <!--./link-logo-->
-                </div>
-                <!--./logo-->
-              </li>
-              <li class="menu-nav__item active">
-                <a href="index.html" class="menu-nav__link"> Home </a>
-              </li>
-              <li class="menu-nav__item">
-                <a href="menu.html" class="menu-nav__link"> Menu </a>
-              </li>
-              <li class="menu-nav__item">
-                <a href="services.html" class="menu-nav__link"> Services </a>
-              </li>
-              <li class="menu-nav__item">
-                <a href="about.html" class="menu-nav__link"> About </a>
-              </li>
-              <li class="menu-nav__item">
-                <a href="contact.html" class="menu-nav__link"> Contact </a>
-              </li>
-              <li class="menu-nav__item">
-                <a href="#!" class="menu-nav__link cart__openBtn">
-                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="menu-nav__item user-controls" style="margin-right: 0px;">
-                <a href="sign-in.html" class="sign-in menu-nav__link">
-                  <i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
-                <span class="menu-nav__link" id="slash">/</span>
-                <a href="sign-up.html" class="sign-up menu-nav__link">Sign Up</a>
-                <button id="logout-btn" class="logout-btn" style="display: none;">Logout</button>
-                <span id="username-display" class="menu-nav__link username-display" style="display: none;"></span>
-              </li>
-            </ul>
-            <!--./menu-nav-->
-          </nav>
-          <!--./nav-->
         </div>
-      </div>
-      <!--./second-header-->
-      <!-- Shopping Cart -->
-      <div class="cart-overlay">
-        <div class="cart">
-          <div class="cart__closeBtn">
-            <i class="fas fa-window-close"></i>
-          </div>
-          <h2>
-            <i class="fa fa-cart-arrow-down"></i>
-            <span class="span-primary">Shopping</span> Cart <i class="fa fa-cart-arrow-down"></i>
-          </h2>
-          <!-- JS will add items here -->
-          <div class="item1-display"></div>
-          <div class="item2-display"></div>
-          <div class="item3-display"></div>
-          <div class="item4-display"></div>
-          <div class="item5-display"></div>
-          <div class="item6-display"></div>
-          <div class="item7-display"></div>
-          <div class="item8-display"></div>
-          <div class="item9-display"></div>
-          <div class="item10-display"></div>
-          <div class="item11-display"></div>
-          <div class="item12-display"></div>
-          <div class="total"></div>
-        </div>
-        <!--./cart-->
-      </div>
-      <!--./cart-overlay-->
     </header>
-    <main>
-      <section class="home">
-        <div class="pic-area">
-          <div class="pic-area-text">
-            <h2>Welcome to</h2>
-            <h1 class="home__name">
-              <i class="fa-solid fa-mug-hot"></i>
-              <span class="logo-first">coffee</span>
-              <span class="logo-last">Brand</span>
-            </h1>
-            <!--./home__name-->
-            <h3>Where coffee and comfort come together</h3>
-            <a href="menu.html">
-              <button class="btn-order">Order Now...!</button>
-            </a>
-          </div>
+    
+    <!-- Shopping Cart Modal -->
+    <div class="cart-overlay">
+        <div class="cart">
+            <button class="cart__closeBtn" aria-label="Close cart">
+                <i class="fas fa-window-close"></i>
+            </button>
+            <h2>
+                <i class="fa fa-cart-arrow-down"></i>
+                <span class="span-primary">Shopping</span> Cart
+                <i class="fa fa-cart-arrow-down"></i>
+            </h2>
+            <div class="cart-items-container"></div>
+            <div class="total"></div>
         </div>
-        <!--./pic-area-->
-    </main>
-    <section class="about-section" id="about">
-      <div class="about-container">
-        <div class="about-text animate-left">
-          <h2>Who We Are</h2>
-          <p> At <span>CoffeeBrand</span>, we pour passion into every cup. From carefully selected beans to expertly crafted brews, our mission is to create moments of pure warmth and joy <i class="fa  fa-mug-hot"></i> <br>
-            <br> Step into our world — where the aroma of freshly ground coffee meets modern comfort and classic taste.
-          </p>
-          <a href="about.html" class="btn-learn">Discover More</a>
-        </div>
-        <div class="about-image animate-right">
-          <img src="img/home 3.jpeg" alt="Coffee Shop Interior" loading="lazy">
-        </div>
-      </div>
-    </section>
-    <section class="menu-section" id="menu">
-      <h2 class="menu-title">Our <span>Special Menu</span>
-      </h2>
-      <div class="menu-container">
-        <div class="menu-card animate-card">
-          <img src="img/home 3.jpeg" alt="Espresso" loading="lazy">
-          <h3>Espresso</h3>
-          <p>Strong. Bold. Perfectly brewed to energize your day <i class="fa  fa-mug-hot"></i></p>
-        </div>
-        <div class="menu-card animate-card">
-          <img src="img/home 4.jpeg" alt="Latte" loading="lazy">
-          <h3>Latte</h3>
-          <p>Soft milk foam with rich coffee — your perfect companion 🌤️</p>
-        </div>
-        <div class="menu-card animate-card">
-          <img src="img/home-img.jpeg" alt="Cappuccino" loading="lazy">
-          <h3>Cappuccino</h3>
-          <p>Foamy, creamy, and strong — the classic coffee taste <i class="fa  fa-mug-hot"></i>✨</p>
-        </div>
-      </div>
-    </section>
-    <!-- Start Footer -->
-    <div class="footer grand-footer" id="footer">
-      <div class="container">
-        <!-- Box 1: About -->
-        <div class="box">
-          <h3>Coffee Brand</h3>
-          <p class="text"> Coffee Brand is your first destination for coffee lovers — brewed with love and served with passion. </p>
-          <ul class="social">
-            <li>
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- Box 2: Quick Links -->
-        <div class="box">
-          <h4>Quick Links</h4>
-          <ul class="links">
-            <li>
-              <i class="fa fa-angle-double-right"></i>
-              <a href="index.html">Home</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-double-right"></i>
-              <a href="menu.html">Menu</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-double-right"></i>
-              <a href="services.html">Services</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-double-right"></i>
-              <a href="about.html">About</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-double-right"></i>
-              <a href="contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Box 3: Contact Info -->
-        <div class="box">
-          <h4>Contact Info</h4>
-          <div class="line">
-            <i class="fas fa-map-marker-alt fa-fw"></i>
-            <div class="info">Egypt, Assiut, Inside The Assiut, 35</div>
-          </div>
-          <div class="line">
-            <i class="far fa-clock fa-fw"></i>
-            <div class="info">From 10:00 AM To 6:00 PM</div>
-          </div>
-          <div class="line">
-            <i class="fas fa-phone-volume fa-fw"></i>
-            <div class="info">
-              <span>+20 1032581322</span>
-              <br>
-              <span>+20 1025939211</span>
-            </div>
-          </div>
-        </div>
-        <!-- Box 4: Gallery -->
-        <div class="box footer-gallery">
-          <h4>From Our Menu</h4>
-          <div class="gallery">
-            <img src="img/menu-1.png" alt="">
-            <img src="img/menu-2.png" alt="">
-            <img src="img/menu-3.png" alt="">
-            <img src="img/menu-4.png" alt="">
-            <img src="img/menu-5.png" alt="">
-            <img src="img/menu-6.png" alt="">
-          </div>
-        </div>
-      </div>
-      <p class="copyright"> &copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa  fa-mug-hot"></i> by LatteLab </p>
     </div>
-    <!-- End Footer -->
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Auto Gallery Slider -->
+        <section class="hero-slider-section">
+            <div class="slider-container">
+                <div class="slider-wrapper" id="heroSlider">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <div class="slide-bg" style="background-image: linear-gradient(135deg, rgba(44, 24, 16, 0.75), rgba(26, 17, 11, 0.85)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1600');"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-subtitle">Welcome to</h2>
+                            <h1 class="slide-title">
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <span class="logo-first">Coffee</span>
+                                <span class="logo-last">Brand</span>
+                            </h1>
+                            <h3 class="slide-tagline">Where coffee and comfort come together</h3>
+                            <a href="menu.html" class="btn-order slide-btn">Order Now...!</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <div class="slide-bg" style="background-image: linear-gradient(135deg, rgba(44, 24, 16, 0.75), rgba(26, 17, 11, 0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600');"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-subtitle">Discover the</h2>
+                            <h1 class="slide-title">
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <span class="logo-first">Perfect</span>
+                                <span class="logo-last">Blend</span>
+                            </h1>
+                            <h3 class="slide-tagline">Artisanal coffee made with passion</h3>
+                            <a href="menu.html" class="btn-order slide-btn">Explore Menu</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <div class="slide-bg" style="background-image: linear-gradient(135deg, rgba(44, 24, 16, 0.75), rgba(26, 17, 11, 0.85)), url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1600');"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-subtitle">Experience the</h2>
+                            <h1 class="slide-title">
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <span class="logo-first">Rich</span>
+                                <span class="logo-last">Aroma</span>
+                            </h1>
+                            <h3 class="slide-tagline">Freshly roasted beans daily</h3>
+                            <a href="menu.html" class="btn-order slide-btn">Shop Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <div class="slide-bg" style="background-image: linear-gradient(135deg, rgba(44, 24, 16, 0.75), rgba(26, 17, 11, 0.85)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1600');"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-subtitle">Start Your Day</h2>
+                            <h1 class="slide-title">
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <span class="logo-first">With</span>
+                                <span class="logo-last">Coffee</span>
+                            </h1>
+                            <h3 class="slide-tagline">Your daily dose of happiness</h3>
+                            <a href="menu.html" class="btn-order slide-btn">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider Navigation Arrows -->
+                <button class="slider-nav prev" id="sliderPrev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="slider-nav next" id="sliderNext">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                
+                <!-- Slider Dots -->
+                <div class="slider-dots" id="sliderDots"></div>
+                
+                <!-- Auto-slide progress bar -->
+                <div class="slider-progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Showcase Section -->
+        <section class="features-showcase">
+            <div class="section-header">
+                <h2 class="section-title">Why <span>Coffee Brand</span></h2>
+                <div class="title-decoration">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item animate-up">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3>100% Organic</h3>
+                    <p>Premium quality beans sourced sustainably</p>
+                </div>
+                <div class="feature-item animate-up">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Free delivery on orders over 200 EGP</p>
+                </div>
+                <div class="feature-item animate-up">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Carefully selected and roasted beans</p>
+                </div>
+                <div class="feature-item animate-up">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Always here to help you</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-container">
+                <div class="about-text animate-left">
+                    <h2>Who We Are</h2>
+                    <p>At <span>Coffee Brand</span>, we pour passion into every cup. From carefully selected beans to expertly crafted brews, our mission is to create moments of pure warmth and joy <i class="fa fa-mug-hot"></i></p>
+                    <p>Step into our world — where the aroma of freshly ground coffee meets modern comfort and classic taste.</p>
+                    <a href="about.html" class="btn-learn">Discover More</a>
+                </div>
+                <div class="about-image animate-right">
+                    <img src="img/home 3.jpeg" alt="Coffee Shop Interior" loading="lazy">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Special Menu Section -->
+        <section class="menu-section" id="menu">
+            <h2 class="menu-title">Our <span>Special Menu</span></h2>
+            <div class="menu-container">
+                <div class="menu-card animate-card">
+                    <img src="img/home 3.jpeg" alt="Espresso" loading="lazy">
+                    <h3>Espresso</h3>
+                    <p>Strong. Bold. Perfectly brewed to energize your day</p>
+                    <div class="menu-card-price">4.25 EGP</div>
+                </div>
+                <div class="menu-card animate-card">
+                    <img src="img/home 4.jpeg" alt="Latte" loading="lazy">
+                    <h3>Latte</h3>
+                    <p>Soft milk foam with rich coffee — your perfect companion</p>
+                    <div class="menu-card-price">4.75 EGP</div>
+                </div>
+                <div class="menu-card animate-card">
+                    <img src="img/home-img.jpeg" alt="Cappuccino" loading="lazy">
+                    <h3>Cappuccino</h3>
+                    <p>Foamy, creamy, and strong — the classic coffee taste</p>
+                    <div class="menu-card-price">4.50 EGP</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Why Choose Us Section -->
+        <section class="why-choose">
+            <h2>Why Choose Us</h2>
+            <div class="features">
+                <div class="feature-card animate-up">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3>Quality Coffee</h3>
+                    <p>We use only premium roasted beans</p>
+                </div>
+                <div class="feature-card animate-up">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <h3>Friendly Service</h3>
+                    <p>Our team makes you feel at home</p>
+                </div>
+                <div class="feature-card animate-up">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                    <h3>Relaxing Atmosphere</h3>
+                    <p>A perfect place to unwind and enjoy</p>
+                </div>
+                <div class="feature-card animate-up">
+                    <div class="icon-wrapper">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <h3>Open All Day</h3>
+                    <p>Come anytime — we're here for you!</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Get 15% Off Your First Order!</h2>
+                <p>Subscribe to our newsletter and receive exclusive offers, coffee tips, and updates directly to your inbox.</p>
+                <div class="cta-buttons">
+                    <a href="menu.html" class="cta-btn primary">Shop Now</a>
+                    <a href="sign-up.html" class="cta-btn secondary">Sign Up</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Latest News Section with Popup -->
+        <section class="news-section">
+            <div class="section-header">
+                <h2 class="section-title">Latest <span>News & Articles</span></h2>
+                <div class="title-decoration">
+                    <i class="fa-regular fa-newspaper"></i>
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <i class="fa-regular fa-newspaper"></i>
+                </div>
+            </div>
+            <div class="news-grid">
+                <!-- News Card 1 -->
+                <div class="news-card animate-up" data-news-id="1">
+                    <div class="news-card-img">
+                        <img src="img/home 3.jpeg" alt="News" loading="lazy">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> April 15, 2025</div>
+                        <h3>The Art of Perfect Espresso</h3>
+                        <p>Discover the secrets behind brewing the perfect espresso shot at home like a professional barista.</p>
+                        <a href="#" class="read-more" data-news="1">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Card 2 -->
+                <div class="news-card animate-up" data-news-id="2">
+                    <div class="news-card-img">
+                        <img src="img/home 4.jpeg" alt="News" loading="lazy">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> April 10, 2025</div>
+                        <h3>Best Coffee Beans for 2025</h3>
+                        <p>Our top picks for the most flavorful coffee beans this year from around the world.</p>
+                        <a href="#" class="read-more" data-news="2">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Card 3 -->
+                <div class="news-card animate-up" data-news-id="3">
+                    <div class="news-card-img">
+                        <img src="img/home-img.jpeg" alt="News" loading="lazy">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> April 5, 2025</div>
+                        <h3>Coffee & Health Benefits</h3>
+                        <p>Learn about the amazing health benefits of drinking coffee and how it boosts your energy.</p>
+                        <a href="#" class="read-more" data-news="3">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- News Popup Modal -->
+    <div id="newsPopup" class="news-popup-overlay">
+        <div class="news-popup-content">
+            <div class="news-popup-header">
+                <img id="popupImage" src="" alt="News Image">
+                <button class="news-popup-close" id="closePopup">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="news-popup-body">
+                <div class="news-popup-date">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="popupDate"></span>
+                </div>
+                <h2 class="news-popup-title" id="popupTitle"></h2>
+                <p class="news-popup-description" id="popupDescription"></p>
+                <div class="news-popup-details" id="popupDetails"></div>
+                <button class="news-popup-btn" id="popupCloseBtn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer grand-footer" id="footer">
+        <div class="container">
+            <div class="box">
+                <h3>Coffee Brand</h3>
+                <p class="text">Coffee Brand is your first destination for coffee lovers — brewed with love and served with passion.</p>
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h4>Quick Links</h4>
+                <ul class="links">
+                    <li><i class="fa fa-angle-double-right"></i><a href="index.html">Home</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="menu.html">Menu</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="services.html">Services</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="about.html">About</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h4>Contact Info</h4>
+                <div class="line"><i class="fas fa-map-marker-alt fa-fw"></i><div class="info">Egypt, Assiut, Inside The Assiut, 35</div></div>
+                <div class="line"><i class="far fa-clock fa-fw"></i><div class="info">From 10:00 AM To 6:00 PM</div></div>
+                <div class="line"><i class="fas fa-phone-volume fa-fw"></i><div class="info"><span>+20 1032581322</span><br><span>+20 1025939211</span></div></div>
+            </div>
+            <div class="box footer-gallery">
+                <h4>From Our Menu</h4>
+                <div class="gallery">
+                    <img src="img/menu-1.png" alt="">
+                    <img src="img/menu-2.png" alt="">
+                    <img src="img/menu-3.png" alt="">
+                    <img src="img/menu-4.png" alt="">
+                    <img src="img/menu-5.png" alt="">
+                    <img src="img/menu-6.png" alt="">
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa fa-mug-hot"></i> by LatteLab</p>
+    </div>
+    
+    <!-- Popup Message -->
+    <div id="popup-box">
+        <div class="popup-content">
+            <div id="popup-icon"></div>
+            <p id="popup-message"></p>
+            <button id="popup-close">OK</button>
+        </div>
+    </div>
+    
+    <!-- Protected Popup -->
+    <div id="protected-popup" class="popup-protect hidden">
+        <div class="popup-inner">
+            <i class="fa-solid fa-lock fa-2x"></i>
+            <p>🔒 Please sign in to continue</p>
+            <button id="go-login">Sign In</button>
+            <button id="go-signup">Create Account</button>
+        </div>
+    </div>
+    
+    <!-- News Popup JavaScript -->
     <script>
-      // / loader window/ 
-      window.addEventListener("load", () => {
-        const loader = document.querySelector(".loader");
-        setTimeout(() => {
-          loader.style.opacity = "0";
-          loader.style.visibility = "hidden";
-        }, 1200);
-      });
-      const home = document.querySelector(".home .pic-area");
-      const backgrounds = ["img/contact-bg.jpg", "img/home-img.jpeg", "img/maxresdefault.jpg", "img/home-img.jpeg"];
-      let current = 0;
-
-      function changeBackground() {
-        home.style.opacity = 0;
-        setTimeout(() => {
-          current = (current + 1) % backgrounds.length;
-          home.style.backgroundImage = `url(${backgrounds[current]})`;
-          home.style.opacity = 1;
-        }, 1000);
-      }
-      home.style.backgroundImage = `url(${backgrounds[0]})`;
-      setInterval(changeBackground, 10000);
-      const animatedEls = document.querySelectorAll(".animate-left, .animate-right, .animate-card, .grand-footer");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.5
-      });
-      animatedEls.forEach(el => observer.observe(el));
+        (function() {
+            // News data
+            const newsData = {
+                1: {
+                    title: "The Art of Perfect Espresso",
+                    date: "April 15, 2025",
+                    description: "Discover the secrets behind brewing the perfect espresso shot at home like a professional barista. Learn about grind size, water temperature, and extraction time.",
+                    image: "img/home 3.jpeg",
+                    details: [
+                        "☕ Grind size: Fine, like table salt",
+                        "🌡️ Water temperature: 195°F - 205°F (90°C - 96°C)",
+                        "⏱️ Extraction time: 25-30 seconds",
+                        "⚖️ Coffee dose: 18-20 grams",
+                        "💧 Water pressure: 9 bars"
+                    ]
+                },
+                2: {
+                    title: "Best Coffee Beans for 2025",
+                    date: "April 10, 2025",
+                    description: "Our top picks for the most flavorful coffee beans this year from around the world. From Ethiopian Yirgacheffe to Colombian Supremo.",
+                    image: "img/home 4.jpeg",
+                    details: [
+                        "🌍 Ethiopian Yirgacheffe - Floral & Citrus notes",
+                        "🇨🇴 Colombian Supremo - Nutty & Caramel notes",
+                        "🇧🇷 Brazilian Santos - Chocolatey & Smooth",
+                        "🇮🇳 Indian Monsooned Malabar - Earthy & Spicy",
+                        "🇮🇩 Sumatran Mandheling - Herbal & Rich"
+                    ]
+                },
+                3: {
+                    title: "Coffee & Health Benefits",
+                    date: "April 5, 2025",
+                    description: "Learn about the amazing health benefits of drinking coffee and how it boosts your energy, focus, and overall well-being.",
+                    image: "img/home-img.jpeg",
+                    details: [
+                        "🧠 Improves cognitive function and focus",
+                        "⚡ Boosts energy and metabolism",
+                        "❤️ Rich in antioxidants",
+                        "🩺 May reduce risk of type 2 diabetes",
+                        "😊 Improves mood and reduces depression risk"
+                    ]
+                }
+            };
+            
+            const popupOverlay = document.getElementById('newsPopup');
+            const popupImage = document.getElementById('popupImage');
+            const popupDate = document.getElementById('popupDate');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupDescription = document.getElementById('popupDescription');
+            const popupDetails = document.getElementById('popupDetails');
+            const closePopupBtn = document.getElementById('closePopup');
+            const popupCloseBtn = document.getElementById('popupCloseBtn');
+            
+            // Function to open popup
+            function openPopup(newsId) {
+                const news = newsData[newsId];
+                if (!news) return;
+                
+                popupImage.src = news.image;
+                popupDate.textContent = news.date;
+                popupTitle.textContent = news.title;
+                popupDescription.textContent = news.description;
+                
+                // Generate details HTML
+                let detailsHtml = '';
+                news.details.forEach(detail => {
+                    detailsHtml += `<p><i class="fa-solid fa-circle-check"></i> ${detail}</p>`;
+                });
+                popupDetails.innerHTML = detailsHtml;
+                
+                popupOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Function to close popup
+            function closePopup() {
+                popupOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Add click event to all read-more buttons
+            document.querySelectorAll('.read-more').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const newsId = this.getAttribute('data-news');
+                    openPopup(newsId);
+                });
+            });
+            
+            // Close popup events
+            closePopupBtn.addEventListener('click', closePopup);
+            popupCloseBtn.addEventListener('click', closePopup);
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) {
+                    closePopup();
+                }
+            });
+            
+            // Close on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+                    closePopup();
+                }
+            });
+        })();
     </script>
-    <script src="https://kit.fontawesome.com/c057664144.js" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-  </body>
+    
+    <!-- Slider JavaScript -->
+    
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config/supabase.js"></script>
+    <script src="js/modules/ui.js"></script>
+    <script src="js/modules/auth.js"></script>
+    <script src="js/modules/products.js"></script>
+    <script src="js/modules/cart.js"></script>
+    <script src="js/modules/gallery.js"></script>
+    <script src="js/modules/home.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>

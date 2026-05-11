@@ -1,375 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drip Cafe - Contact</title>
-    <!-- Font Style -->
-    <link rel="stylesheet" href="css/main.modified.css" />
+    <title>Coffee Brand - Contact Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Marck+Script&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="icon" href="img/favicon.png" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      <i class="fa-solid fa-moon"></i>
+        <i class="fa-solid fa-moon"></i>
     </button>
-    <!-- TOp Button -->
     <button id="backToTop" title="Back to Top">↑</button>
-    <div class="loader">
-      <div class="coffee-cup">
-        <div class="steam"></div>
-      </div>
-      <p>Brewing your coffee...</p>
+
+    <div class="coffee-loader" id="coffee-loader">
+        <div class="letters">
+            <span>C</span><span>O</span><span>F</span><span>F</span><span>E</span><span>E</span>
+            <span>B</span><span>R</span><span>A</span><span>N</span><span>D</span>
+        </div>
+        <p class="wait-text">Please wait...</p>
     </div>
+
+    <!-- Header -->
     <header>
-      <header>
         <div class="second-header">
-          <div class="menu-btn">
-            <span class="menu-btn__burger"></span>
-          </div>
-          <div class="container">
-            <nav class="nav">
-              <div class="logo">
-                <div class="image">
-                  <img src="img/logo.png" />
-                </div>
-                <div class="link-logo">
-                  <a href="index.html" class="logo">
-                    <div class="words-logo">
-                      <span class="logo-first"> Coffee</span>
-                      <span class="logo-last">Brand</span>
-                    </div>
-                  </a>
-                </div>
-                <!--./link-logo-->
-              </div>
-              <!--./logo-->
-              <ul class="menu-nav">
-                <li class="scroll menu-nav__item">
-                  <div class="scroll-logo">
-                    <div class="scroll-image">
-                      <img src="img/logo.png" />
-                    </div>
-                    <div class="scroll-link-logo">
-                      <a href="index.html" class="scroll-logo">
-                        <div class="words-logo">
-                          <span class="logo-first"> Coffee</span>
-                          <span class="logo-last">Brand</span>
+            <button class="menu-btn" aria-label="Menu">
+                <span class="menu-btn__burger"></span>
+            </button>
+            <div class="container">
+                <nav class="nav">
+                    <div class="logo">
+                        <div class="image">
+                            <img src="img/logo.png" alt="Logo" />
                         </div>
-                      </a>
+                        <div class="link-logo">
+                            <a href="index.html" class="logo">
+                                <div class="words-logo">
+                                    <span class="logo-first">Coffee</span>
+                                    <span class="logo-last">Brand</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <!--./link-logo-->
-                  </div>
-                  <!--./logo-->
-                </li>
-                <li class="menu-nav__item active">
-                  <a href="index.html" class="menu-nav__link"> Home </a>
-                </li>
-                <li class="menu-nav__item">
-                  <a href="menu.html" class="menu-nav__link"> Menu </a>
-                </li>
-                <li class="menu-nav__item">
-                  <a href="services.html" class="menu-nav__link"> Services </a>
-                </li>
-                <li class="menu-nav__item">
-                  <a href="about.html" class="menu-nav__link"> About </a>
-                </li>
-                <li class="menu-nav__item">
-                  <a href="contact.html" class="menu-nav__link"> Contact </a>
-                </li>
-                <li class="menu-nav__item">
-                  <a href="#!" class="menu-nav__link cart__openBtn">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li class="menu-nav__item user-controls" style="margin-right: 0px;">
-                  <a href="sign-in.html" class="sign-in menu-nav__link">
-                    <i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
-                  <span class="menu-nav__link" id="slash">/</span>
-                  <a href="sign-up.html" class="sign-up menu-nav__link">Sign Up</a>
-                  <button id="logout-btn" class="logout-btn" style="display: none;">Logout</button>
-                  <span id="username-display" class="menu-nav__link username-display" style="display: none;"></span>
-                </li>
-              </ul>
-              <!--./menu-nav-->
-            </nav>
-            <!--./nav-->
-          </div>
+                    
+                    <ul class="menu-nav">
+                        <li class="scroll menu-nav__item">
+                            <div class="scroll-logo">
+                                <div class="scroll-image">
+                                    <img src="img/logo.png" alt="Logo" />
+                                </div>
+                                <div class="scroll-link-logo">
+                                    <a href="index.html" class="scroll-logo">
+                                        <div class="words-logo">
+                                            <span class="logo-first">Coffee</span>
+                                            <span class="logo-last">Brand</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="index.html" class="menu-nav__link">Home</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="menu.html" class="menu-nav__link">Menu</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="services.html" class="menu-nav__link">Services</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <a href="about.html" class="menu-nav__link">About</a>
+                        </li>
+                        <li class="menu-nav__item active">
+                            <a href="contact.html" class="menu-nav__link">Contact</a>
+                        </li>
+                        <li class="menu-nav__item">
+                            <button class="menu-nav__link cart__openBtn" aria-label="Shopping cart">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                <span class="cart-badge hidden" id="cart-badge">0</span>
+                            </button>
+                        </li>
+                        <li class="menu-nav__item user-controls">
+                            <a href="sign-in.html" class="sign-in menu-nav__link">
+                                <i class="fa fa-user" aria-hidden="true"></i>Sign In
+                            </a>
+                            <span class="menu-nav__link" id="slash">/</span>
+                            <a href="sign-up.html" class="sign-up menu-nav__link">Sign Up</a>
+                            <button id="logout-btn" class="logout-btn hidden">Logout</button>
+                            <span id="username-display" class="menu-nav__link username-display hidden"></span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <!--./second-header-->
-      </header>
-      <header class="contact-header">
-        <h1>Contact Us</h1>
-        <div class="layer"></div>
-      </header>
-      <!-- Shopping Cart -->
-      <div class="cart-overlay">
+    </header>
+    
+    <!-- Shopping Cart Modal -->
+    <div class="cart-overlay">
         <div class="cart">
-          <div class="cart__closeBtn">
-            <i class="fas fa-window-close"></i>
-          </div>
-          <h2>
-            <i class="fa fa-cart-arrow-down"></i>
-            <span class="span-primary">Shopping</span> Cart <i class="fa fa-cart-arrow-down"></i>
-          </h2>
-          <!-- JS will add items here -->
-          <div class="item1-display"></div>
-          <div class="item2-display"></div>
-          <div class="item3-display"></div>
-          <div class="item4-display"></div>
-          <div class="item5-display"></div>
-          <div class="item6-display"></div>
-          <div class="item7-display"></div>
-          <div class="item8-display"></div>
-          <div class="item9-display"></div>
-          <div class="item10-display"></div>
-          <div class="item11-display"></div>
-          <div class="item12-display"></div>
-          <div class="total"></div>
+            <button class="cart__closeBtn" aria-label="Close cart">
+                <i class="fas fa-window-close"></i>
+            </button>
+            <h2>
+                <i class="fa fa-cart-arrow-down"></i>
+                <span class="span-primary">Shopping</span> Cart
+                <i class="fa fa-cart-arrow-down"></i>
+            </h2>
+            <div class="cart-items-container"></div>
+            <div class="total"></div>
         </div>
-      </div>
-      <!-- Start Team Members-->
-      <div class="team" id="team ">
-        <h2 class="main-title">Team Members</h2>
-        <div class="container">
-          <div class="box">
-            <div class="data">
-              <img src="img/GalalImage.jpeg" alt="">
-              <div class="social">
-                <a href="#">
-                  <li class="fab fa-facebook"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-twitter"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-linkedin"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-youtube"></li>
-                </a>
-              </div>
-            </div>
-            <div class="info">
-              <h2>Galal Abd El-Baset</h2>
-              <p>Front End Developer</p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="data">
-              <img src="img/Mohamed.jpeg" alt="">
-              <div class="social">
-                <a href="#">
-                  <li class="fab fa-facebook"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-twitter"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-linkedin"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-youtube"></li>
-                </a>
-              </div>
-            </div>
-            <div class="info">
-              <h2>Mohamed Hmada</h2>
-              <p>Front End Developer</p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="data">
-              <img src="img/Dina.png" alt="">
-              <div class="social">
-                <a href="#">
-                  <li class="fab fa-facebook"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-twitter"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-linkedin"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-youtube"></li>
-                </a>
-              </div>
-            </div>
-            <div class="info">
-              <h2>Dina Sayed</h2>
-              <p>Frontend React.JS</p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="data">
-              <img src="img/Mariam.jpg" alt="">
-              <div class="social">
-                <a href="#">
-                  <li class="fab fa-facebook"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-twitter"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-linkedin"></li>
-                </a>
-                <a href="#">
-                  <li class="fab fa-youtube"></li>
-                </a>
-              </div>
-            </div>
-            <div class="info">
-              <h2>Mariam Ashraf</h2>
-              <p>Front End Developer</p>
-            </div>
-          </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Get In Touch</h1>
+            <p class="hero-tagline">We'd love to hear from you!</p>
         </div>
-        <!-- End Team Members  -->
-      </div>
-      <section class="contact-section">
-        <div class="contact-info animate-left">
-          <h2>Get In Touch</h2>
-          <p>
-            <i class="fa-solid fa-location-dot"></i>Egypt, Assiut, Inside The Assiut, 35
-          </p>
-          <br>
-          <p>
-            <i class="fa-solid fa-envelope"></i>CoffeeBrand
-          </p>
-          <br>
-          <p>
-            <i class="fa-solid fa-phone"></i> +20 1153146550 +20 1025939211
-          </p>
+    </section>
+
+    <!-- ========== CONTACT CARDS ========== -->
+    <section class="contact-cards-section">
+        <div class="contact-cards-grid">
+            <div class="contact-card">
+                <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+                <h3>Call Us</h3>
+                <p>+20 1032581322</p>
+                <p>+20 1025939211</p>
+                <small>Available 24/7 for emergencies</small>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                <h3>Email Us</h3>
+                <p>info@coffeebrand.com</p>
+                <p>support@coffeebrand.com</p>
+                <small>Response within 24 hours</small>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <h3>Visit Us</h3>
+                <p>Egypt, Assiut</p>
+                <p>Inside The Assiut, 35</p>
+                <small>Open daily 10 AM - 6 PM</small>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon"><i class="fa-regular fa-message"></i></div>
+                <h3>Live Chat</h3>
+                <p>Available 24/7</p>
+                <p>Response in under 5 minutes</p>
+                <button class="chat-btn" id="chatBtn">Start Chat →</button>
+            </div>
         </div>
-        <form class="contact-form animate-up">
-          <input type="text" placeholder="Name" required>
-          <input type="email" placeholder="Email" required>
-          <input type="text" placeholder="Contact number">
-          <textarea placeholder="Message" rows="4" required></textarea>
-          <button type="submit">SUBMIT</button>
+    </section>
+
+    <!-- Contact Section (Form + Map) -->
+    <section class="contact-section">
+        <form class="contact-form animate-up" id="contactForm">
+            <h2>Send Us a Message</h2>
+            <div class="form-row">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-row">
+                <input type="tel" placeholder="Phone Number">
+                <select id="inquiry-type">
+                    <option value="">Select Inquiry Type</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="catering">Catering Request</option>
+                    <option value="delivery">Delivery Issue</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="events">Events Booking</option>
+                </select>
+            </div>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
         </form>
         <div class="map animate-right">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13853.708342971715!2d31.1760626!3d27.1809621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14452a5a962b431d%3A0x961b2b0f928d61b4!2sAsyut%2C%20Assiut%20Governorate!5e0!3m2!1sen!2seg!4v1697299999999" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13853.708342971715!2d31.1760626!3d27.1809621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14452a5a962b431d%3A0x961b2b0f928d61b4!2sAsyut%2C%20Assiut%20Governorate!5e0!3m2!1sen!2seg!4v1697299999999" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
         </div>
-      </section>
-      <!-- Start Footer -->
-      <div class="footer" id="footer">
+    </section>
+
+    <!-- Working Hours Section -->
+    <section class="hours-section">
         <div class="container">
-          <!-- Box 1: About -->
-          <div class="box">
-            <h3>Coffee Brand</h3>
-            <p class="text"> Coffee Brand is your first destination for coffee lovers — brewed with love and served with passion. </p>
-            <ul class="social">
-              <li>
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fab fa-whatsapp"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!-- Box 2: Quick Links -->
-          <div class="box">
-            <h4>Quick Links</h4>
-            <ul class="links">
-              <li>
-                <i class="fa fa-angle-double-right"></i>
-                <a href="index.html">Home</a>
-              </li>
-              <li>
-                <i class="fa fa-angle-double-right"></i>
-                <a href="menu.html">Menu</a>
-              </li>
-              <li>
-                <i class="fa fa-angle-double-right"></i>
-                <a href="services.html">Services</a>
-              </li>
-              <li>
-                <i class="fa fa-angle-double-right"></i>
-                <a href="about.html">About</a>
-              </li>
-              <li>
-                <i class="fa fa-angle-double-right"></i>
-                <a href="contact.html">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Box 3: Contact Info -->
-          <div class="box">
-            <h4>Contact Info</h4>
-            <div class="line">
-              <i class="fas fa-map-marker-alt fa-fw"></i>
-              <div class="info">Egypt, Assiut, Inside The Assiut, 35</div>
+            <div class="section-header">
+                <h2 class="section-title">Opening <span>Hours</span></h2>
+                <div class="title-decoration">
+                    <i class="fa-regular fa-clock"></i>
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <i class="fa-regular fa-clock"></i>
+                </div>
             </div>
-            <div class="line">
-              <i class="far fa-clock fa-fw"></i>
-              <div class="info">From 10:00 AM To 6:00 PM</div>
+            <div class="hours-grid" id="hours-grid">
+                <div class="hour-card">
+                    <div class="day">Monday - Thursday</div>
+                    <div class="time">9:00 AM - 10:00 PM</div>
+                </div>
+                <div class="hour-card">
+                    <div class="day">Friday - Saturday</div>
+                    <div class="time">10:00 AM - 12:00 AM</div>
+                </div>
+                <div class="hour-card">
+                    <div class="day">Sunday</div>
+                    <div class="time">12:00 PM - 8:00 PM</div>
+                </div>
             </div>
-            <div class="line">
-              <i class="fas fa-phone-volume fa-fw"></i>
-              <div class="info">
-                <span>+20 1153146550</span>
-                <br>
-                <span>+20 1025939211</span>
-              </div>
+            <div class="status-container" id="status-container">
+                <div class="status-badge open">
+                    <i class="fa-solid fa-circle"></i> We're Open Now!
+                </div>
             </div>
-          </div>
-          <!-- Box 4: Gallery -->
-          <div class="box footer-gallery">
-            <h4>From Our Menu</h4>
-            <div class="gallery">
-              <img src="img/menu-1.png" alt="">
-              <img src="img/menu-2.png" alt="">
-              <img src="img/menu-3.png" alt="">
-              <img src="img/menu-4.png" alt="">
-              <img src="img/menu-5.png" alt="">
-              <img src="img/menu-6.png" alt="">
-            </div>
-          </div>
         </div>
-        <p class="copyright"> &copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa  fa-mug-hot"></i> by LatteLab </p>
-      </div>
-      <!-- End Footer -->
-      <script src="js/script.js"></script>
-      <script src="https://kit.fontawesome.com/c057664144.js" crossorigin="anonymous"></script>
-      <script>
-        // / loader window/ 
-        window.addEventListener("load", () => {
-          const loader = document.querySelector(".loader");
-          setTimeout(() => {
-            loader.style.opacity = "0";
-            loader.style.visibility = "hidden";
-          }, 1200);
-        });
-        const animatedEls = document.querySelectorAll(".animate-left, .animate-right, .animate-up");
-        window.addEventListener("scroll", () => {
-          animatedEls.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-              el.classList.add("show");
-            }
-          });
-        });
-        document.querySelector(".contact-form").addEventListener("submit", (e) => {
-          e.preventDefault();
-          alert("شكراً لتواصلك معنا  سيتم الرد قريبًا!");
-        });
-      </script>
-  </body>
+    </section>
+
+    <!-- Support Metrics Section (بدل Stats) -->
+    <section class="support-metrics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Support <span>Metrics</span></h2>
+                <div class="title-decoration">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <i class="fa-solid fa-headset"></i>
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+                <p>Our commitment to exceptional service</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-regular fa-clock"></i></div>
+                    <div class="metric-number" data-target="10">0</div>
+                    <div class="metric-label">Average Response Time</div>
+                    <div class="metric-unit">minutes</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div class="metric-number" data-target="35">0</div>
+                    <div class="metric-label">Average Delivery Time</div>
+                    <div class="metric-unit">minutes</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="metric-number" data-target="24">0</div>
+                    <div class="metric-label">Support Availability</div>
+                    <div class="metric-unit">hours / 7 days</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-regular fa-face-smile"></i></div>
+                    <div class="metric-number" data-target="98">0</div>
+                    <div class="metric-label">Customer Satisfaction</div>
+                    <div class="metric-unit">%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Support Section -->
+    <section class="emergency-section">
+        <div class="container">
+            <div class="emergency-card">
+                <i class="fa-solid fa-headset"></i>
+                <h3>24/7 Customer Support</h3>
+                <p>Have an urgent issue? Call us anytime</p>
+                <a href="tel:+201032581322" class="emergency-phone">
+                    <i class="fa-solid fa-phone"></i> +20 1032581322
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+                <div class="title-decoration">
+                    <i class="fa-solid fa-question"></i>
+                    <i class="fa-solid fa-circle-info"></i>
+                    <i class="fa-solid fa-question"></i>
+                </div>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question"><span>☕ How can I place a delivery order?</span><i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>You can order directly through our website menu page or call us at +20 1032581322 for delivery. Free delivery on orders over 200 EGP.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>🚚 What is your delivery range?</span><i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>We deliver within Assiut city limits. Delivery typically takes 30-45 minutes depending on your location.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>💳 What payment methods do you accept?</span><i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>We accept cash on delivery, credit/debit cards, and mobile wallets (Vodafone Cash, InstaPay).</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>🎉 Can I book your cafe for private events?</span><i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Yes! Our cafe is available for private events, birthdays, and corporate gatherings. Contact us for a quote.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>🔄 How do I report an issue with my order?</span><i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Contact our support team immediately via phone or email, and we'll resolve your issue within 30 minutes.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-cta">
+        <div class="cta-content">
+            <h2>Still Have Questions?</h2>
+            <p>Our support team is ready to assist you 24/7</p>
+            <div class="cta-buttons">
+                <a href="#contactForm" class="cta-btn primary">Send a Message</a>
+                <a href="tel:+201032581322" class="cta-btn secondary">Call Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer grand-footer" id="footer">
+        <div class="container">
+            <div class="box">
+                <h3>Coffee Brand</h3>
+                <p class="text">Coffee Brand is your first destination for coffee lovers — brewed with love and served with passion.</p>
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h4>Quick Links</h4>
+                <ul class="links">
+                    <li><i class="fa fa-angle-double-right"></i><a href="index.html">Home</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="menu.html">Menu</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="services.html">Services</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="about.html">About</a></li>
+                    <li><i class="fa fa-angle-double-right"></i><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h4>Contact Info</h4>
+                <div class="line"><i class="fas fa-map-marker-alt fa-fw"></i><div class="info">Egypt, Assiut, Inside The Assiut, 35</div></div>
+                <div class="line"><i class="far fa-clock fa-fw"></i><div class="info">From 10:00 AM To 6:00 PM</div></div>
+                <div class="line"><i class="fas fa-phone-volume fa-fw"></i><div class="info"><span>+20 1032581322</span><br><span>+20 1025939211</span></div></div>
+            </div>
+            <div class="box footer-gallery">
+                <h4>From Our Menu</h4>
+                <div class="gallery">
+                    <img src="img/menu-1.png" alt=""><img src="img/menu-2.png" alt=""><img src="img/menu-3.png" alt="">
+                    <img src="img/menu-4.png" alt=""><img src="img/menu-5.png" alt=""><img src="img/menu-6.png" alt="">
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 <span>Coffee Brand</span> — Made With <i class="fa fa-mug-hot"></i> by LatteLab</p>
+    </div>
+
+    <!-- Popup Message -->
+    <div id="popup-box">
+        <div class="popup-content">
+            <div id="popup-icon"></div>
+            <p id="popup-message"></p>
+            <button id="popup-close">OK</button>
+        </div>
+    </div>
+    
+    <!-- Protected Popup -->
+    <div id="protected-popup" class="popup-protect hidden">
+        <div class="popup-inner">
+            <i class="fa-solid fa-lock fa-2x" style="color:#ff9800;"></i>
+            <p>🔒 Please sign in to continue</p>
+            <button id="go-login">Sign In</button>
+            <button id="go-signup">Create Account</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config/supabase.js"></script>
+    <script src="js/modules/ui.js"></script>
+    <script src="js/modules/auth.js"></script>
+    <script src="js/modules/contact.js"></script>
+    <script src="js/modules/faq.js"></script>
+    <script src="js/modules/cart.js"></script>
+    <script src="js/modules/gallery.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>
